@@ -11,6 +11,13 @@
     - [clang](#clang)
     - [llvm](#llvm)
   - [среды разработки](#среды-разработки)
+    - [Code::Blocks](#codeblocks)
+    - [Dev-C++](#dev-c)
+    - [NetBeans](#netbeans)
+    - [Eclipse](#eclipse)
+    - [Visual Studio Code](#visual-studio-code)
+    - [Visual Studio](#visual-studio)
+    - [CLion](#clion)
   - [библиография](#библиография)
 
 ## история языка
@@ -129,6 +136,20 @@ LLVM может создавать машинный код для множест
 Для компиляции С++ кода LLVM использует свою версию компилятора GCC.
 
 ## среды разработки
+
+### Code::Blocks
+
+### Dev-C++
+
+### NetBeans
+
+### Eclipse
+
+### Visual Studio Code
+
+### Visual Studio
+
+### CLion
 
 ## библиография
 

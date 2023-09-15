@@ -432,6 +432,24 @@ int a = 10;
 int& another_ref_a = a;
 ```
 
+__Ссылка всегда инициализируется, и инициализируется другой переменной.__
+
+```cpp
+#include <iostream>
+
+int main() {
+    int value = 10;
+    int &ref = value;
+
+    std::cout << "value: " << value << ", reference = " << ref << std::endl;
+    value = 12;
+    std::cout << "value: " << value << ", reference = " << ref << std::endl;
+    ref = 15;
+    std::cout << "value: " << value << ", reference = " << ref << std::endl;
+    return 0;
+}
+```
+
 Так как ссылка представляет собой псевдоним существующей переменной, то изменение значения переменной изменяет значение ссылки.
 
 Чаще всего ссылка используется при объявлении параметров функций.
@@ -441,12 +459,42 @@ int& another_ref_a = a;
 Языки С / C++ предлагают специализированный тип данных: указатель на область памяти определённого типа.
 Значение переменной данного типа представляет собой целое число, которое представляет собой адрес памяти. Размер памяти, на которую указывает данный указатель, определяется прописанным типом данных.
 
+Объявление указателя выполняется указанием типа, потом пишется специальный знак `*`, после которого пишется имя переменной. 
+
 ```cpp
+// <type> * <pointer_name>;
 int * sampleIntPointer;
 char * sampleCharPointer;
 ```
 
 В примере `sampleIntPointer` может содержать адрес участка памяти в 4 байта.
+
+Чтобы проинициализировать указатель, в переменную необходимо записать адрес ячейки памяти. Взятие адреса переменной выполняется при помощи специального символа `&`.
+
+Пример работы с указателями:
+
+```cpp
+#include <iostream>
+
+int main() {
+    int coolValue = 256;
+    int * intPtr;
+    char * charPtr;
+
+    intPtr = &coolValue;
+    charPtr = (char*)&coolValue;
+
+    std::cout << "Cool value = " << coolValue << std::endl;
+    std::cout << "pointer of cool value = " << intPtr << std::endl;
+    std::cout << "access value by pointer = " << *intPtr << std::endl;
+    std::cout << "first byte = " << (int)*charPtr << std::endl;
+    std::cout << "second byte = " << (int)*(charPtr + 1) << std::endl;
+    std::cout << "third byte = " << (int)*(charPtr + 2) << std::endl;
+    std::cout << "fourth byte = " << (int)*(charPtr + 3) << std::endl;
+
+    return 0;
+}
+```
 
 Поведение ссылки похоже на поведение константного указателя.
 
