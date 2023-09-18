@@ -18,6 +18,7 @@
 typedef unsigned char age_type;
 
 // удобно для создания указателей на функции.
+// [Указатель на функцию](https://sweethome.gitbook.io/advanced-cpp/particularities/function_pointers)
 typedef void (*pfunc_type)(void);
 
 // сокращаем длинный тип
