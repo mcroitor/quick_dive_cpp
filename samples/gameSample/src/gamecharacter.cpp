@@ -32,5 +32,14 @@ MapPart GameCharacter::ViewRange()
 
 void GameCharacter::Attack(GameCharacter & gameCharacter)
 {
-    gameCharacter._health -= (this->_attack - gameCharacter._defence);
+    size_t damage = 0;
+    if(this->_attack >= gameCharacter._defence) {
+        damage = this->_attack - gameCharacter._defence;
+    }
+    if(gameCharacter._health >= damage) {
+        gameCharacter._health -= gameCharacter._health - damage;
+    }
+    else {
+        gameCharacter._health = 0;
+    }    
 }
