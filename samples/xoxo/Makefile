@@ -7,7 +7,7 @@ BINDIR = ./bin
 
 APP = xoxo
 
-.phony: dirs clean compile link
+all: dirs clean compile link
 
 dirs:
 	@echo create structure
@@ -17,7 +17,7 @@ dirs:
 
 clean:
 	@echo remove obj and exe files
-	rm -drf ${OBJDIR}/*.o
+	rm -drf ${OBJDIR}/*
 	rm -drf ${BINDIR}/*.exe
 	@echo done
 
