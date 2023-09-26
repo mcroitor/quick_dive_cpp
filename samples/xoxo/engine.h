@@ -9,6 +9,7 @@ class Engine
     Board board_;
     Player xPlayer_;
     Player oPlayer_;
+    int stage;
 
 public:
     Engine();
