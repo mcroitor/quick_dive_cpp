@@ -252,8 +252,18 @@ vector operator + (const vector& p1, const vector& p2){
 Для сравнивания объектов используется базовая операция `a == b`, операция `a != b` является производной от базовой.
 
 ```cpp
-bool operator != (const int& a, const int& b) {
-    return !(a == b);
+class int_pair{
+    int first, second;
+public:
+    // ...
+    // оператор сравнения
+    bool operator == (const int_pair& p) const {
+        return (first == p.first) && (second == p.second);
+    }
+};
+
+bool operator != (const int_pair& p1, const int_pair& p2){
+    return !(p1 == p2);
 }
 ```
 
@@ -267,6 +277,28 @@ bool operator != (const int& a, const int& b) {
  * `a <=> b` меньше или равно нулю, если `a <= b`;
  * `a <=> b` больше нуля, если `a > b`;
  * `a <=> b` больше или равно нулю, если `a >= b`.
+
+Если определить данный оператор, то компилятор, на его основе, автоматически сгенерирует все операторы упорядочивания.
+
+```cpp
+class int_pair{
+    int first, second;
+public:
+    // ...
+    // spaceship
+    auto operator <=> (const int_pair& p) const {
+        return first <=> p.first;
+    }
+};
+// ...
+int main() {
+    int_pair pair(2, 3);
+    int_pair pair2(1, 5);
+    bool result = pair < pair2;
+    std::cout << pair << std::endl;
+    return 0;
+}
+```
 
 ## Ссылки
 
