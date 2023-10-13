@@ -8,7 +8,12 @@
 #include <vector>
 #include <string>
 
-class Game {
+/**
+ * @brief game engine
+ *
+ */
+class Game
+{
     Map map;
     Hero hero;
     std::vector<Monster> monsters;
@@ -16,8 +21,20 @@ class Game {
     const std::vector<std::string> Data() const;
 
 public:
+    /**
+     * @brief Construct a new Game object
+     *
+     */
     Game();
-    void Init(const std::string&);
+    /**
+     * @brief load data from stage description file
+     * @param filename
+     */
+    void Init(const std::string &);
+    /**
+     * @brief main loop start
+     * 
+     */
     void Run();
 };
 

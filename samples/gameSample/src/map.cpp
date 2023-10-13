@@ -15,3 +15,11 @@ const std::vector<std::string> &Map::Data() const
 bool Map::IsWall(Point position) const {
     return map[position.x][position.y] == (char)GraphicObject::WALL;
 }
+
+size_t Map::GetWidth() const {
+    return map[0].size();
+}
+
+size_t Map::GetHeight() const {
+    return map.size();
+}

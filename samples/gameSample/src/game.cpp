@@ -52,6 +52,10 @@ void Game::Init(const std::string &stage)
 void Game::Run()
 {
     // TODO: implement this
+    Point panelPosition = {0, map.GetHeight() + 5};
+    Point testPos;
+    Direction direction;
+    TUI::ClearScreen();
     TUI::Draw(this->Data());
 
     int cmd;
@@ -68,15 +72,27 @@ void Game::Run()
         case VK_DOWN:
         case VK_LEFT:
         case VK_RIGHT:
-            Direction direction = (Direction)cmd;
-            Point testPos = hero.PositionToMove(direction);
+            direction = (Direction)cmd;
+            testPos = hero.PositionToMove(direction);
             if (map.IsWall(testPos) == false)
             {
                 hero.Move(direction);
-                TUI::SetCursor({0, 0});
+
                 TUI::Draw(this->Data());
+                TUI::Clear(panelPosition, 40);
+                TUI::Write(panelPosition, "Moved to " + ToString(direction));
+            }
+            else
+            {
+                TUI::Clear(panelPosition, 40);
+                TUI::Write(panelPosition, "Oops! Wall!");
             }
             break;
+        case VK_NONAME:
+            break;
+        default:
+            TUI::Clear(panelPosition, 40);
+            TUI::Write(panelPosition, "Unknown command");
         }
         Sleep(50);
     }
