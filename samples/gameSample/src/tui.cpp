@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <WinUser.h>
 
-int TUI::scanKeys()
+int TUI::ScanKeys()
 {
     if (GetAsyncKeyState(VK_UP))
     {
@@ -29,7 +29,7 @@ int TUI::scanKeys()
     return VK_NONAME;
 }
 
-void TUI::setPosition(point_t position)
+void TUI::SetCursor(Point position)
 {
     std::cout << "\033[" << position.x << ";" << position.y << "H";
 }

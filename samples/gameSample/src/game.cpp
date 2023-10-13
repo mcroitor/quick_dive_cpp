@@ -6,7 +6,6 @@
 #include <algorithm>
 #include <iterator>
 
-
 Game::Game()
 {
 }
@@ -47,7 +46,7 @@ void Game::Init(const std::string &stage)
             }
         }
     }
-    map.load(data);
+    map.Load(data);
 }
 
 void Game::Run()
@@ -59,7 +58,7 @@ void Game::Run()
     // while((cmd = scanKeys()) != VK_ESCAPE) {
     while (true)
     {
-        cmd = TUI::scanKeys();
+        cmd = TUI::ScanKeys();
         // dispatch
         switch (cmd)
         {
@@ -69,10 +68,14 @@ void Game::Run()
         case VK_DOWN:
         case VK_LEFT:
         case VK_RIGHT:
-            hero.Move((direction_t)cmd);
-            //system("clear");
-            TUI::setPosition({0, 0});
-            TUI::Draw(this->Data());
+            Direction direction = (Direction)cmd;
+            Point testPos = hero.PositionToMove(direction);
+            if (map.IsWall(testPos) == false)
+            {
+                hero.Move(direction);
+                TUI::SetCursor({0, 0});
+                TUI::Draw(this->Data());
+            }
             break;
         }
         Sleep(50);
@@ -81,7 +84,7 @@ void Game::Run()
 
 const std::vector<std::string> Game::Data() const
 {
-    auto data = map.data();
+    auto data = map.Data();
     data[hero.Position().x][hero.Position().y] = (char)GraphicObject::HERO;
     for (const auto &monster : monsters)
     {

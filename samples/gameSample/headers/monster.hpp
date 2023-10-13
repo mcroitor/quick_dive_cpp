@@ -6,7 +6,7 @@
 class Monster : public GameCharacter
 {
 public:
-    Monster(const std::string& = "Monster", point_t = {1, 1});
+    Monster(const std::string& = "Monster", Point = {1, 1});
 };
 
 #endif

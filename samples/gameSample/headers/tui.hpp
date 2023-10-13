@@ -6,8 +6,8 @@
 #include <string>
 
 struct TUI {
-    static int scanKeys();
-    static void setPosition(point_t);
+    static int ScanKeys();
+    static void SetCursor(Point);
     static void Draw(const std::vector<std::string>&);
 };
 

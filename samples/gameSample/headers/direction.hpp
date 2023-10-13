@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <WinUser.h>
 
-enum class direction_t {
+enum class Direction {
   north = VK_UP,
   south = VK_DOWN,
   east = VK_RIGHT,

@@ -1,6 +1,7 @@
 #ifndef __MAP_H__
 #define __MAP_H__
 
+#include "point.hpp"
 #include <vector>
 #include <string>
 
@@ -10,8 +11,9 @@ class Map
 
 public:
     Map();
-    void load(const std::vector<std::string> &);
-    const std::vector<std::string>& data() const;
+    void Load(const std::vector<std::string> &);
+    bool IsWall(Point) const;
+    const std::vector<std::string>& Data() const;
 };
 
 #endif

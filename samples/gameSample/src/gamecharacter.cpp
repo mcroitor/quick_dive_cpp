@@ -1,6 +1,6 @@
 #include "gamecharacter.hpp"
 
-GameCharacter::GameCharacter(std::string name, point_t position)
+GameCharacter::GameCharacter(std::string name, Point position)
     : _attack(10),
       _defence(2),
       _health(100),
@@ -10,23 +10,43 @@ GameCharacter::GameCharacter(std::string name, point_t position)
 {
 }
 
-void GameCharacter::Move(direction_t direction)
+void GameCharacter::Move(Direction direction)
 {
     switch (direction)
     {
-    case direction_t::north: // top
+    case Direction::north: // top
         _position.x -= 1;
         break;
-    case direction_t::south: // bottom
+    case Direction::south: // bottom
         _position.x += 1;
         break;
-    case direction_t::east: // right
+    case Direction::east: // right
         _position.y += 1;
         break;
-    case direction_t::west: // left
+    case Direction::west: // left
         _position.y -= 1;
         break;
     }
+}
+Point GameCharacter::PositionToMove(Direction direction) const
+{
+    Point position = _position;
+    switch (direction)
+    {
+    case Direction::north: // top
+        position.x -= 1;
+        break;
+    case Direction::south: // bottom
+        position.x += 1;
+        break;
+    case Direction::east: // right
+        position.y += 1;
+        break;
+    case Direction::west: // left
+        position.y -= 1;
+        break;
+    }
+    return position;
 }
 void GameCharacter::Cure(size_t value)
 {
@@ -55,7 +75,7 @@ void GameCharacter::Attack(GameCharacter &gameCharacter) const
     }
 }
 
-point_t GameCharacter::Position() const
+Point GameCharacter::Position() const
 {
     return _position;
 }
