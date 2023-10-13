@@ -19,8 +19,9 @@ După executarea acestei lucrării de laborator student va face cunoștința cu 
 5. Adăugați în repozitoriu fișier README.md cu descrierea proiectului
 6. Creați fișiere  `h` / `cpp` cu definirea structurilor de bază necesitate pentru proiect
 7. Plasați cod pe __GitHub__
-8. La lucrare în Moodle adaugați referința repozitoriu.
 
 ## Prezentare
+
+La lucrare de laborator în Moodle adaugați referința repozitoriu.
 
 ## Evaluare

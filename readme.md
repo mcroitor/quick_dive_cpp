@@ -1,6 +1,6 @@
 # C++ programming language
 
-## Course for Game Design Speciality, MSU
+### Course for Game Design Speciality, MSU
 
 ## Description
 
