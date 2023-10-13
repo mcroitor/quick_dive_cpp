@@ -8,20 +8,21 @@
 #include "mappart.hpp"
 
 class GameCharacter {
-    std::string _name;
-    size_t      _health;
     size_t      _attack;
     size_t      _defence;
-    size_t      _viewRangeRadius;
+    size_t      _health;
+    std::string _name;
     point_t     _position;
+    size_t      _viewRangeRadius;
 
 public:
-  GameCharacter(std::string); // конструктор
+  GameCharacter(std::string, point_t); // конструктор
   void Move(direction_t);
   void Cure(size_t);
-  MapPart ViewRange();
+  MapPart ViewRange() const;
+  point_t Position() const;
 
-  void Attack(GameCharacter&);
+  void Attack(GameCharacter&) const;
 };
 
 #endif // __GAME_CHARACTER_H__
