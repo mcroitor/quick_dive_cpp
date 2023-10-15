@@ -6,9 +6,9 @@ BINDIR=./bin
 OBJDIR=./obj
 SRCDIR=./src
 
-SRCFILES=${SRCDIR}/cell.cpp ${SRCDIR}/direction.cpp ${SRCDIR}/game.cpp ${SRCDIR}/gamecharacter.cpp \
+SRCFILES=${SRCDIR}/direction.cpp ${SRCDIR}/game.cpp ${SRCDIR}/gamecharacter.cpp \
 	${SRCDIR}/hero.cpp ${SRCDIR}/map.cpp ${SRCDIR}/main.cpp ${SRCDIR}/monster.cpp ${SRCDIR}/tui.cpp
-OBJFILES=${OBJDIR}/cell.o ${OBJDIR}/direction.o ${OBJDIR}/game.o ${OBJDIR}/gamecharacter.o \
+OBJFILES=${OBJDIR}/direction.o ${OBJDIR}/game.o ${OBJDIR}/gamecharacter.o \
 	${OBJDIR}/hero.o ${OBJDIR}/map.o ${OBJDIR}/main.o ${OBJDIR}/monster.o ${OBJDIR}/tui.o
 
 APP=game.exe
@@ -22,9 +22,6 @@ prepare:
 	@echo "done"
 
 compile: ${OBJFILES}
-
-${OBJDIR}/cell.o: ${SRCDIR}/cell.cpp
-	${CC}  ${CFLAGS} ${SRCDIR}/cell.cpp -o ${OBJDIR}/cell.o
 
 ${OBJDIR}/direction.o:
 	${CC} ${CFLAGS} ${SRCDIR}/direction.cpp -o ${OBJDIR}/direction.o

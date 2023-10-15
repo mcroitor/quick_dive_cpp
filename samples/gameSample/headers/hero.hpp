@@ -3,10 +3,20 @@
 
 #include "gamecharacter.hpp"
 
+/**
+ * @brief The Hero Character
+ *
+ */
 class Hero : public GameCharacter
 {
 public:
-    Hero(const std::string& = "Hero", point_t = {1, 1});
+    /**
+     * @brief Construct a new Hero object
+     *
+     * @param name The name of the Hero
+     * @param position The position of the Hero
+     */
+    Hero(const std::string & = "Hero", Point = {1, 1});
 };
 
 #endif

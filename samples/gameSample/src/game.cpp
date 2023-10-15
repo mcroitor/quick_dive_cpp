@@ -6,7 +6,6 @@
 #include <algorithm>
 #include <iterator>
 
-
 Game::Game()
 {
 }
@@ -47,19 +46,23 @@ void Game::Init(const std::string &stage)
             }
         }
     }
-    map.load(data);
+    map.Load(data);
 }
 
 void Game::Run()
 {
     // TODO: implement this
+    Point panelPosition = {0, map.GetHeight() + 5};
+    Point testPos;
+    Direction direction;
+    TUI::ClearScreen();
     TUI::Draw(this->Data());
 
     int cmd;
     // while((cmd = scanKeys()) != VK_ESCAPE) {
     while (true)
     {
-        cmd = TUI::scanKeys();
+        cmd = TUI::ScanKeys();
         // dispatch
         switch (cmd)
         {
@@ -69,11 +72,27 @@ void Game::Run()
         case VK_DOWN:
         case VK_LEFT:
         case VK_RIGHT:
-            hero.Move((direction_t)cmd);
-            //system("clear");
-            TUI::setPosition({0, 0});
-            TUI::Draw(this->Data());
+            direction = (Direction)cmd;
+            testPos = hero.PositionToMove(direction);
+            if (map.IsWall(testPos) == false)
+            {
+                hero.Move(direction);
+
+                TUI::Draw(this->Data());
+                TUI::Clear(panelPosition, 40);
+                TUI::Write(panelPosition, "Moved to " + ToString(direction));
+            }
+            else
+            {
+                TUI::Clear(panelPosition, 40);
+                TUI::Write(panelPosition, "Oops! Wall!");
+            }
             break;
+        case VK_NONAME:
+            break;
+        default:
+            TUI::Clear(panelPosition, 40);
+            TUI::Write(panelPosition, "Unknown command");
         }
         Sleep(50);
     }
@@ -81,7 +100,7 @@ void Game::Run()
 
 const std::vector<std::string> Game::Data() const
 {
-    auto data = map.data();
+    auto data = map.Data();
     data[hero.Position().x][hero.Position().y] = (char)GraphicObject::HERO;
     for (const auto &monster : monsters)
     {

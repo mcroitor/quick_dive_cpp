@@ -1,9 +1,9 @@
-#ifndef _POINT_T_H_
-#define _POINT_T_H_
+#ifndef _POINT_H_
+#define _POINT_H_
 
 #include <cstddef>
 
-struct point_t {
+struct Point {
     size_t x, y;
 };
 
