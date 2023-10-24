@@ -79,3 +79,7 @@ Point GameCharacter::Position() const
 {
     return _position;
 }
+
+std::string GameCharacter::Name() const {
+    return _name;
+}

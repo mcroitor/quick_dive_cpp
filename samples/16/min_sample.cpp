@@ -15,6 +15,7 @@ int main() {
     float c = 1.5;
 
     std::cout << min1(a, b) << std::endl;
+    std::cout << min1<float>(a, c) << std::endl;
     std::cout << min2(b, c) << std::endl;
     return 0;
 }

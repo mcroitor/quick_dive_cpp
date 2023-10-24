@@ -13,6 +13,7 @@
  */
 class GameCharacter
 {
+protected:
   size_t _attack;
   size_t _defence;
   size_t _health;
@@ -31,42 +32,49 @@ public:
 
   /**
    * @brief Move the character in the direction
-   * 
+   *
    * @param direction The direction of movement
    */
   void Move(Direction);
 
   /**
    * @brief Detect position for movement
-   * 
-   * @return Point 
+   *
+   * @return Point
    */
   Point PositionToMove(Direction) const;
 
   /**
    * @brief Cure the character
-   * 
+   *
    * @param hit points for health restoration
    */
   void Cure(size_t);
 
   /**
    * @brief not implemented, no idea
-   * 
-   * @return MapPart 
+   *
+   * @return MapPart
    */
   MapPart ViewRange() const;
 
   /**
    * @brief returns the position of the character
-   * 
-   * @return Point 
+   *
+   * @return Point
    */
   Point Position() const;
 
   /**
+   * @brief get name of the character
+   *
+   * @return std::string
+   */
+  std::string Name() const;
+
+  /**
    * @brief attack another character
-   * 
+   *
    * @param character attacked character
    */
   void Attack(GameCharacter &) const;

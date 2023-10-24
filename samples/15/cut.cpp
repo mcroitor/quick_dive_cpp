@@ -12,22 +12,20 @@ public:
         return size_;
     }
 
-    cut operator = (cut const right)
+    cut operator=(cut const right)
     {
-        size_ = right.size_;// <=> this->size_ = right.size_
+        size_ = right.size_; // <=> this->size_ = right.size_
         return *this;
     }
 
-    cut operator += (cut const right)
+    cut operator+=(cut const right)
     {
-        size_ += right.size_;// <=> this->size_ += right.size_
+        size_ += right.size_; // <=> this->size_ += right.size_
         return *this;
     }
-
-
 };
 
-cut operator + (const cut &left, const cut &right)
+cut operator+(const cut &left, const cut &right)
 {
     cut result = left;
     result += right;
