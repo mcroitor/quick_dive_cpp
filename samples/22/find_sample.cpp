@@ -2,9 +2,9 @@
 #include <algorithm>
 #include <vector>
 
-/*
+
 template<typename InputIterator, typename Predicate>
-InputIterator find(InputIterator begin, InputIterator end, Predicate predicate) {
+InputIterator find_if(InputIterator begin, InputIterator end, Predicate predicate) {
     while(begin != end) {
         if(predicate(*begin)) {
             return begin;
@@ -12,8 +12,20 @@ InputIterator find(InputIterator begin, InputIterator end, Predicate predicate) 
         ++begin;
     }
     return begin;
+
 }
-*/
+
+template<typename InputIterator, typename TYPE>
+ InputIterator find(InputIterator begin, InputIterator end, TYPE value) {
+    while(begin != end) {
+        if((*begin==value)) {
+            return begin;
+        }
+        ++begin;
+    }
+    return begin;
+
+}
 
 bool isOdd(int x) { return x % 2 == 1; }
 
