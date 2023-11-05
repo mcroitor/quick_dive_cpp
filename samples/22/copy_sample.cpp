@@ -5,10 +5,24 @@
 
 void print(int i);
 
-template<typename InputIter_1, typename InputIter_2, typename Predicate>
-void myCopy(InputIter_1 begin_1, InputIter_1 end_1, InputIter_2 begin_2, Predicate predicate){
-    while(begin_1 != end_1){
-        if(predicate(begin_1)) {
+template <typename InputIter_1, typename OutputIter_2>
+void copy(InputIter_1 begin_1, InputIter_1 end_1, OutputIter_2 begin_2)
+{
+    while (begin_1 != end_1)
+    {
+        *begin_2 = *begin_1;
+        ++begin_2;
+        ++begin_1;
+    }
+}
+
+template <typename InputIter_1, typename OutputIter_2, typename Predicate>
+void copy_if(InputIter_1 begin_1, InputIter_1 end_1, OutputIter_2 begin_2, Predicate predicate)
+{
+    while (begin_1 != end_1)
+    {
+        if (predicate(*begin_1))
+        {
             *begin_2 = *begin_1;
             ++begin_2;
         }
@@ -16,22 +30,22 @@ void myCopy(InputIter_1 begin_1, InputIter_1 end_1, InputIter_2 begin_2, Predica
     }
 }
 
-struct isOdd{
+struct isOdd
+{
 
-    bool operator()(int i) const{
-        
-        return i%2 ==1;
+    bool operator()(int i) const
+    {
+
+        return i % 2 == 1;
     }
-
 };
 
-
-int main() {
-    std::deque<int> d {8, 12, 10, 5, 4, 9, 13, 15};
+int main()
+{
+    std::deque<int> d{8, 12, 10, 5, 4, 9, 13, 15};
     std::vector<int> v;
 
     isOdd _isOdd;
-
 
     std::cout << "vector before copying: ";
     std::for_each(v.begin(), v.end(), print);
@@ -50,6 +64,7 @@ int main() {
     return 0;
 }
 
-void print(int i) {
+void print(int i)
+{
     std::cout << i << " ";
 }

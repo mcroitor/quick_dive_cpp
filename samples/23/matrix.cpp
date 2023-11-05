@@ -7,18 +7,24 @@
 using matrix = std::array<std::array<double, 4>, 4>;
 std::mutex mutex;
 
-void sum(const matrix &a, const matrix &b, matrix &c, int row)
+void sum(const matrix &a, const matrix &b, matrix &c)
 {
+    std::lock_guard<std::mutex> locker(mutex);
     for (int i = 0; i < 4; i++)
     {
-        c[row][i] = a[row][i] + b[row][i];
+        for (int row = 0; row < 4; row++)
+        {
+            c[row][i] = a[row][i] + b[row][i];
+        }
     }
 }
 
 void print(const matrix &m)
 {
-    std::lock_guard<std::mutex> locker(mutex);
-    for (int row = 0; row < 4; row++)
+   // std::this_thread::sleep_for(std::chrono::milliseconds(2));
+   // std::lock_guard<std::mutex> locker(mutex);
+   mutex.lock();
+    for (int row = 3; row > -1; row--)
     {
         for (int col = 0; col < 4; ++col)
         {
@@ -26,6 +32,7 @@ void print(const matrix &m)
         }
         std::cout << std::endl;
     }
+   // mutex.unlock();
 }
 
 int main()
@@ -49,14 +56,8 @@ int main()
         std::array<double, 4>{0, 0, 0, 0},
     };
 
-    {
-        std::lock_guard<std::mutex> locker(mutex);
-        std::jthread t1(sum, a, b, std::ref(c), 0);
-        std::jthread t2(sum, a, b, std::ref(c), 1);
-        std::jthread t3(sum, a, b, std::ref(c), 2);
-        std::jthread t4(sum, a, b, std::ref(c), 3);
-    }
-    std::jthread tprint(print, c);
+    std::jthread tprint(print,std::cref (c));
+    std::jthread t1(sum,std::cref(a),std::cref(b), std::ref(c));
     // std::jthread tprint2(print, c);
     return 0;
 }

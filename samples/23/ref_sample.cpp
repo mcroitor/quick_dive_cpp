@@ -16,6 +16,7 @@ int main(){
 
     for(int i = 0; i != 5; ++i) {
         std::jthread thread(sum, a[i], b[i], std::ref(result[i]));
+    //  std::jthread thread(sum, a[i], b[i],result[i]);
     }
     for(auto el: result) {
         std::cout << el << " ";

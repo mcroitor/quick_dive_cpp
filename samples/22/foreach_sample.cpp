@@ -21,5 +21,5 @@ int main() {
 }
 
 void print(int i) {
-    std::cout << i << std::endl;
+    std::cout << i << " ";
 }
