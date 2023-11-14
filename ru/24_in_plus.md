@@ -8,7 +8,7 @@
   - [умные указатели](#умные-указатели)
   - [valarray](#valarray)
   - [подшивка](#подшивка)
-  - [variant и any](#variant-и-any)
+  - [variant, optional, any](#variant-optional-any)
   - [регулярные выражения](#регулярные-выражения)
 
 ## лямбда выражения
@@ -198,7 +198,7 @@ for (auto element : result)
 
 ## подшивка
 
-## variant и any
+## variant, optional, any
 
 ## регулярные выражения
 
