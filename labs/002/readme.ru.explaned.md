@@ -6,7 +6,7 @@
 
 ## Задание
 
-Задание выполняется на основе предыдущей лабораторной работы. С целью упрощения работы предлагается выполнять шаги в среде разработки `Visual Studio Code`, и установленным с операционной среде компилятором `MingW G++`.
+Задание выполняется на основе предыдущей лабораторной работы. С целью упрощения работы предлагается выполнять шаги в среде разработки `Visual Studio Code`, и установленным с операционной среде компилятором `MingW G++`, программа для сборки проектов `make`, а также `GIT`.
 
 ### Создание ветки
 
@@ -28,12 +28,143 @@ git checkout -B lab02
 
 ### Добавление cpp файлов
 
-Для каждого `hpp` файла создайте соответствующий `cpp` файл:
+Для каждого `hpp` файла создайте соответствующий `cpp` файл. Каждый С++ файл должен содержать реализации функций классов, объявленных в заголовочных файлах. Примерные содержания `cpp` файлов.
 
+1. `apple.cpp`
+
+```cpp
+#include "apple.hpp"
+
+Apple::Apple() {}
+Apple::Apple(const Point &position) {}
+Point Apple::GetPosition() const {}
+```
+
+2. `board.cpp`
+
+```cpp
+#include "board.hpp"
+
+Board::Board(int width, int height) {}
+int Board::GetWidth() const {}
+int Board::GetHeight() const {}
+```
+
+3. `direction.cpp`
+
+```cpp
+#include "direction.hpp"
+```
+
+4. `game_engine.cpp`
+
+```cpp
+#include "game_engine.hpp"
+
+GameEngine::GameEngine() {}
+void GameEngine::Init() {}
+void GameEngine::Run() {}
+```
+
+5. `painter.cpp`
+
+```cpp
+#include "painter.hpp"
+
+void Painter::DrawImage(Point topLeft, Point bottomRight, char **image) {}
+void Painter::WriteText(Point position, char *text) {}
+```
+
+6. `pont.cpp`
+
+```cpp
+#include "point.hpp"
+```
+
+7. `snake.cpp`
+
+```cpp
+#include "snake.hpp"
+
+Snake::Snake() {}
+Snake::Snake(const Point &_position) {}
+void Snake::Move(Direction direction) {}
+int Snake::GetSize() const {}
+Point Snake::GetPosition() const {}
+void Snake::Eat(const Apple &apple) {}
+```
+
+Также создайте файл `main.cpp` который будет содержать точку входа:
+
+```cpp
+#include "game_engine.hpp"
+
+int main() {
+    GameEngine engine;
+    engine.Init();
+    engine.Run();
+    return 0;
+}
+```
 
 ### Компиляция из командной строки
 
+Для проверки работы компилятора, в командной строке перейдите в директорию проекта и выполните следующую команду:
+
+```bash
+g++ apple.cpp -o apple.o -c
+```
+
+Ключ `-c` указывает компилятору создать объектный файл. В результате выполнения данной команды в директории будет создан файл `apple.o`.
+
 ### Создание файла сборки
+
+В директории проекта создайте файл `Makefile` со следующим содержимым:
+
+```makefile
+all: SnakeGame
+
+SnakeGame: apple.o board.o direction.o game_engine.o painter.o point.o snake.o main.o
+	g++ -o Snake.exe apple.o board.o direction.o game_engine.o painter.o point.o snake.o main.o
+
+apple.o:
+	g++ apple.cpp -o apple.o -c
+
+board.o:
+	g++ board.cpp -o board.o -c
+
+direction.o:
+	g++ direction.cpp -o direction.o -c
+
+game_engine.o:
+	g++ game_engine.cpp -o game_engine.o -c
+
+painter.o:
+	g++ painter.cpp -o painter.o -c
+
+point.o:
+	g++ point.cpp -o point.o -c
+
+snake.o:
+	g++ snake.cpp -o snake.o -c
+
+main.o:
+	g++ main.cpp -o main.o -c
+
+clean:
+	rm -f *.o *.exe
+```
+
+В командной строке выполните следующие команды:
+
+```bash
+# clean directory from objects and executables
+make clean
+# build application
+make
+```
+
+В директории проекта будет создано приложение `Snake.exe` и ряд объектных файлов, с расширением `.o`.
 
 ### Публикация ветки и её слияние
 
@@ -48,6 +179,10 @@ git commit -m "first compilation"
 git push
 ```
 
+После этого вы можете добавить созданную ветку к ветке `main`.
+
 ## Представление
+
+При представлении ответа прикрепите ссылку на репозиторий.
 
 ## Оценивание
