@@ -1,9 +1,14 @@
 #include "event.hpp"
 
-Event::Event(const std::string &name, const std::string &message, const std::string &sceneName) : 
-    _name(name),
-    _message(message),
-    _sceneName(sceneName)
+Event::Event(const std::string &name, const std::string &message, const std::string &sceneName) : _name(name),
+                                                                                                  _message(message),
+                                                                                                  _sceneName(sceneName)
+{
+}
+
+Event::Event(const Event &other) : _name(other._name),
+                                   _message(other._message),
+                                   _sceneName(other._sceneName)
 {
 }
 
@@ -24,12 +29,13 @@ std::string Event::GetSceneName() const
 
 std::string Event::ToJSON() const
 {
-    return std::string("{\"name\":\"") + this->GetName() + 
-        std::string("\",\"message\":\"") + this->GetMessage() +
-        std::string("\",\"sceneName\":\"") + this->GetSceneName() +
-        std::string("\"}");
+    return std::string("{\"name\":\"") + this->GetName() +
+           std::string("\",\"message\":\"") + this->GetMessage() +
+           std::string("\",\"sceneName\":\"") + this->GetSceneName() +
+           std::string("\"}");
 }
 
-bool operator==(const Event& left, const Event& right){
+bool operator==(const Event &left, const Event &right)
+{
     return left.GetName() == right.GetName();
 }

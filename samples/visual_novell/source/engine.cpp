@@ -11,7 +11,8 @@ void Engine::LoadScenario(const std::string &filename)
 void Engine::Run()
 {
     // TODO: Add implementation
+    Painter painter;
     while (currentScene != scenario.GetScene(LAST_SCENE)) {
-        currentScene.Draw();
+        currentScene.Draw(painter);
     }
 }
