@@ -19,7 +19,7 @@ class Scenario {
      * @brief Construct a new Scenario object
      * 
      */
-    Scenario();
+    Scenario() = default;
     /**
      * @brief Load scenario from specified file
      * @param fileName The name of the JSON file with scenario information

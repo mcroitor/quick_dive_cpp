@@ -33,6 +33,7 @@ public:
      * @param const std::string& sceneName
      */
     Event(const std::string &name, const std::string &message, const std::string &sceneName);
+    Event(const Event& other);
 
     /**
      * @brief Get the Event Name

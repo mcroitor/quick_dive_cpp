@@ -13,16 +13,8 @@ Scene Scene::Load(const std::string &json)
 
 Event Scene::GetEvent(const std::string &eventName) const
 {
-    struct IsValidEvent
-    {
-        std::string _eventName;
-        IsValidEvent(const std::string &eventName) : _eventName(eventName) {}
-        bool operator()(const Event &e) const
-        {
-            return _eventName == e.GetName();
-        }
-    };
-    auto it = std::find(_events.begin(), _events.end(), IsValidEvent(eventName));
+    auto it = std::find_if(_events.begin(), _events.end(), [&eventName](const Event& e){ return e.GetName() == eventName; } );
+    return *it;
 }
 
 std::string Scene::GetName() const
