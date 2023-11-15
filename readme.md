@@ -45,4 +45,4 @@ The course consists of 15 theory classes and 15 practical sessions.
 3. Constructors and operators.
 4. The standard C++ library usage.
 5. Project support. Writing documentation.
-6. Creation and use of modules/libraries.
+6. Creation and usage of modules/libraries.
