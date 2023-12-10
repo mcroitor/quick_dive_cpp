@@ -7,11 +7,11 @@ OBJDIR 		= obj
 APP			= visual
 
 CXXFLAGS 	= -c -std=c++20
-LDFLAGS 	=
+LDFLAGS 	= $(BINDIR)/event.dll
 
 SRC			=
 SRC			+= engine.cpp
-SRC			+= event.cpp
+#SRC			+= event.cpp
 SRC			+= main.cpp
 SRC			+= painter.cpp
 SRC			+= scenario.cpp
@@ -19,13 +19,17 @@ SRC			+= scene.cpp
 
 OBJ			=
 OBJ			+= $(OBJDIR)/engine.o
-OBJ			+= $(OBJDIR)/event.o
+#OBJ			+= $(OBJDIR)/event.o
 OBJ			+= $(OBJDIR)/main.o
 OBJ			+= $(OBJDIR)/painter.o
 OBJ			+= $(OBJDIR)/scenario.o
 OBJ			+= $(OBJDIR)/scene.o
 
-all: prepare build tests
+all: prepare libevent build tests
+
+libevent: $(OBJDIR)/event.o
+#	 ar rvs $(BINDIR)/libevent.a $(OBJDIR)/event.o
+	$(CXX) $(OBJDIR)/event.o -o $(BINDIR)/event.dll -shared
 
 prepare:
 	@echo "create necessary directories"
@@ -65,3 +69,11 @@ clean:
 
 run:
 	$(BINDIR)/$(APP)
+
+help:
+	@echo "usage:"
+	@echo "   make [all]  - compile project"
+	@echo "   make clean  - remove object files and apps"
+	@echo "   make run    - run app"
+	@echo "   make tests  - run tests"
+	@echo "   make help   - show this help"
