@@ -200,5 +200,9 @@ for (auto element : result)
 
 ## variant, optional, any
 
+```cpp
+
+```
+
 ## регулярные выражения
 
