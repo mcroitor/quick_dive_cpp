@@ -5,7 +5,7 @@
 class Event {
     std::string name;
     std::string message;
-    std::string sceneName;
+    std::string nextScene;
 }
 
 class Scene{

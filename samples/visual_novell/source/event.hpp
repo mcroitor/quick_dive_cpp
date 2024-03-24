@@ -23,16 +23,16 @@ class Event
      * @brief event change game to this scene
      *
      */
-    std::string _sceneName;
+    std::string _nextScene;
 
 public:
     /**
      * @brief Construct a new Event object
      * @param const std::string& name
      * @param const std::string& message
-     * @param const std::string& sceneName
+     * @param const std::string& nextScene
      */
-    Event(const std::string &name, const std::string &message, const std::string &sceneName);
+    Event(const std::string &name, const std::string &message, const std::string &nextScene);
     Event(const Event& other);
 
     /**
@@ -54,7 +54,7 @@ public:
      *
      * @return std::string
      */
-    std::string GetSceneName() const;
+    std::string GetNextScene() const;
 
     /**
      * @brief Create a JSON representation of the Event object
