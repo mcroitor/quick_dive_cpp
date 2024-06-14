@@ -1,48 +1,57 @@
-# C++ programming language
+# Программирование на языке С++
 
-### Course for Game Design Speciality, MSU
+## Описание
 
-## Description
+Репозиторий представляет собой конспект + материалы курса _Программирование на языке С++_. Курс предназначен для студентов второго курса, специальность "Разработка игр". В рамках курса студент ознакомится:
 
-The course is designed for second-year students majoring in "Game Development". Within the course, students will learn:
+- основами языка С++
+- объектно-ориентированным программированием
+- стандартной библиотекой С++
+- использованием библиотек
+- созданием сложных приложений на С++
 
- * Basics of the C++ language
- * Object-oriented programming
- * Standard C++ library
- * Working with libraries
- * Creating complex applications in C++
+В процессе обучения студент получит следующие знания и навыки:
 
-The course consists of 15 theory classes and 15 practical sessions.
+- понимание основных конструкций языка С++;
+- умение создавать классы и использовать объектно-ориентированные принципы;
+- умение использовать стандартную библиотеку С++;
+- умение создавать сложные (модульные) приложения на С++;
+- создание проектов С++;
+- сборка приложений С++;
+- использование GIT;
+- написание документации;
+- использование сторонних библиотек.
 
-1. [Romanian](./readme.ro.md)
-2. [Russian](./readme.ru.md)
+Также студент создаст собственную игру на языке С++.
 
-## Lesson themes
+Курс рассчитан на 15 теоретических занятий и 15 лабораторных занятий.
 
-1. Basic language constructions (6 lessons)
-   1. С++ language evolution: standards, compilers, IDE.
-   2. Basics of language.
-   3. User (custom) data types.
-   4. Object-Oriented Programming.
-   5. Overload of operations.
-   6. Metaprogramming.
-2. Standard C++ Library (4 lessons)
-    1. Containers and iterators.
-    2. Algorithms.
-    3. Multithreading.
-    4. Additional utilites from the C++ standard library.
-3. Application development in C++ (5 lessons)
-    1. Project. Project build systems.
-    2. Using third party libraries.
-    3. Creation of libraries.
-    4. Interaction with databases.
-    5. Event-driven programming.
+## Темы занятий
 
-## Laboratory topics
+1. основные конструкции языка (6 занятий)
+   1. [Развитие языка С++: стандарты, компиляторы, среда разработки.](./ru/11_intro.md)
+   2. [Основы языка.](./ru/12_basics.md)
+   3. [Пользовательские типы данных.](./ru/13_classes.md)
+   4. [Объектно-Ориентированное Программирование.](./ru/14_oop.md)
+   5. [Перегрузка операций.](./ru/15_operations.md)
+   6. [Метапрограммирование.](./ru/16_metaprogramming.md)
+2. Стандартная библиотека С++ (4 занятий)
+   1. [Контейнеры и итераторы.](./ru/21_containers.md)
+   2. [Алгоритмы.](./ru/22_algorithms.md)
+   3. [Многопоточность.](./ru/23_threads.md)
+   4. [Дополнительные средства стандартной библиотеки С++.](./ru/24_in_plus.md)
+3. Разработка приложений на С++ (5 занятий)
+   1. [Проект. Системы сборки проектов.](./ru/31_projects.md)
+   2. [Использование сторонних библиотек.](./ru/32_lib_usage.md)
+   3. [Создание библиотек.](./ru/33_lib_dev.md)
+   4. [Взаимодействие с базами данных.](./ru/34_db.md)
+   5. [Событийное программирование.](./ru/35_event_driven.md)
 
-1. Project creation. Working with GIT.
-2. Class definition and usage. Multi-file projects. Build the project.
-3. Constructors and operators.
-4. The standard C++ library usage.
-5. Project support. Writing documentation.
-6. Creation and usage of modules/libraries.
+## Темы лабораторных работ
+
+1. Создание проекта. Работа с GIT.
+2. Создание и использование классов. Многофайловые проекты. Сборка проекта.
+3. Композиция. Наследование. Полиморфизм.
+4. Использование стандартной библиотеки С++.
+5. Сопровождение проекта. Написание документации.
+6. Создание и использование модулей / библиотек.
