@@ -101,7 +101,7 @@ public:
     virtual ~Animal();
 
     virtual void eat() const {
-        std::cout << "do eat" << std::endl;
+        puts("do eat");
     }
     void move(point pt) {
         position = pt;
