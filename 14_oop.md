@@ -145,16 +145,16 @@ B& b = a1; // ERROR!
 
 ```cpp
 // nopoly.cpp
-#include <iostream>
+#include <cstdio>
 
 struct A {
     A() {}
-    void print() const { std::cout << "A"; }
+    void print() const { puts("A"); }
 };
 
 struct B: public A {
     B(){}
-    void print() const { std::cout << "B"; }
+    void print() const { puts("B"); }
 };
 
 int main(){
