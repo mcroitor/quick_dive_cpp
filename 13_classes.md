@@ -6,6 +6,7 @@
   - [структуры](#структуры)
   - [классы](#классы)
     - [ключевое слово this](#ключевое-слово-this)
+  - [Библиография](#библиография)
 
 ## псевдонимы
 
@@ -270,3 +271,8 @@ void GameCharacter::Move(direction_t direction)
 ```
 
 Более подробно классы рассматриваются в контексте [объектно-ориентированного программирования](./14_oop.md).
+
+## Библиография
+
+1. [Стандарт языка С++](https://github.com/cplusplus/draft/releases/tag/n4917)
+2. [cppreference.com](https://en.cppreference.com/w/cpp/language/class)

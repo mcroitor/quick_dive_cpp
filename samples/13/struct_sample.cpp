@@ -2,6 +2,20 @@
 
 using namespace std;
 
+struct complex {
+    double x;
+    double y;
+};
+struct vector {
+    double x;
+    double y;
+};
+struct point {
+    double x;
+    double y;
+};
+
+
 struct Player {
     /**
      * @brief no brief description
@@ -16,7 +30,7 @@ struct Player {
 };
 
 int main() {
-    Player player1 = { 100, 0, 5, "Joe"};
+    Player player1 = { .health = 100, 0, 5, .name = "Joe"};
     Player player2;
 
     player2.name = "Vasea";
