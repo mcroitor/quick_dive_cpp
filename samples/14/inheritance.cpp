@@ -43,19 +43,17 @@ public:
     };
 };
 
-double getArea(figure* f) {
-    return f->area();
+double getArea(figure& f) {
+    return f.area();
 }
 
 int main()
 {
-    square *_square = new square(5);
-    circle *_circle = new circle(6);
+    square _square(5);
+    circle _circle(6);
     
     cout << "square area = " << getArea(_square) << endl;
     cout << "circle area = " << getArea(_circle) << endl;
-
-    delete _square;
-    delete _circle;
+    
     return 0;
 }

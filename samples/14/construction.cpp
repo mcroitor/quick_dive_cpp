@@ -44,12 +44,16 @@ point pt { point::createOyPoint(5) };
 point pt2 { pt };
 
 int main() {
+    point p;
     point pt {};
-    point pt1(1);
-    point pt2 = point(1);
+    // point pt1(1); // bad guy
+    // point pt2 = point(1); // bad guy
     point pt3 = point();
-    point pt4();
+    // point pt4();
     point pt5(pt);
-    point pt6 = {1, 2, 3};
+    point pt6 {1, 2, 3};
+
+    point sample = point::createOxPoint(5);
+    point sample2 = pt3.createOyPoint(2);
     return 0;
 }
