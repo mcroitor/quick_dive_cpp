@@ -65,7 +65,7 @@
 2. При компиляции программы указать путь к библиотеке в параметрах компиляции:
 
 ```bash
-g++ -o MyProgram.exe MyProgram.cpp -IC:\MyLibs\MyMath -LC:\MyLibs\MyMath -lMyMath
+g++ -o MyProgram.exe MyProgram.cpp -IC:\\MyLibs\\MyMath -LC:\\MyLibs\\MyMath -lMyMath
 ```
 
 В данном случае ключ компиляции `-I` указывает путь к заголовочным файлам библиотеки, ключ `-L` указывает путь к библиотекам программирования, а ключ `-l` указывает имя библиотеки.
