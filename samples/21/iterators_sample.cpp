@@ -1,90 +1,114 @@
-
-template <typename T>
-struct InputIterator
+template <class Type>
+class InputIterator
 {
-    const T &operator*() const;
-    InputIterator<T> operator++();
-    InputIterator<T> operator++(int);
+    virtual InputIterator<Type> operator++() = 0;
+    virtual InputIterator<Type> operator++(int) = 0;
+
+    virtual const Type &operator*() const = 0;
+
+    virtual bool operator == (const InputIterator<Type>& it) const = 0;
+    virtual bool operator != (const InputIterator<Type>& it) const = 0;
 };
 
-template <typename T>
-struct OutputIterator
+template <class Type>
+class OutputIterator
 {
-    T &operator*();
-    OutputIterator<T> operator++();
-    OutputIterator<T> operator++(int);
+    virtual InputIterator<Type> operator++() = 0;
+    virtual InputIterator<Type> operator++(int) = 0;
+
+    virtual Type &operator*() = 0;
 };
 
-template <typename T>
-struct ForwardIterator
+template <class Type>
+class ForwardIterator
 {
-    T &operator*();
-    const T &operator*() const;
-    ForwardIterator<T> operator++();
-    ForwardIterator<T> operator++(int);
+    virtual ForwardIterator<Type> operator++() = 0;
+    virtual ForwardIterator<Type> operator++(int) = 0;
+
+    virtual const Type &operator*() const = 0;
+    virtual Type &operator*() = 0;
+
+    virtual bool operator == (const ForwardIterator<Type>& it) const = 0;
+    virtual bool operator != (const ForwardIterator<Type>& it) const = 0;
 };
 
-template <typename T>
-struct BidirectionalIterator
+template <class Type>
+class BidirectionalIterator
 {
-    T &operator*();
-    const T &operator*() const;
-    BidirectionalIterator<T> operator++();
-    BidirectionalIterator<T> operator++(int);
-    BidirectionalIterator<T> operator--();
-    BidirectionalIterator<T> operator--(int);
+    virtual BidirectionalIterator<Type> operator++() = 0;
+    virtual BidirectionalIterator<Type> operator++(int) = 0;
+    virtual BidirectionalIterator<Type> operator--() = 0;
+    virtual BidirectionalIterator<Type> operator--(int) = 0;
+
+    virtual const Type &operator*() const = 0;
+    virtual Type &operator*() = 0;
+
+    virtual bool operator == (const BidirectionalIterator<Type>& it) const = 0;
+    virtual bool operator != (const BidirectionalIterator<Type>& it) const = 0;
 };
 
-template <typename T>
-struct RandomAccessIterator
+template <class Type>
+class RandomAccessIterator
 {
-    T &operator*();
-    const T &operator*() const;
-    RandomAccessIterator<T> operator++();
-    RandomAccessIterator<T> operator++(int);
-    RandomAccessIterator<T> operator--();
-    RandomAccessIterator<T> operator--(int);
+    virtual RandomAccessIterator<Type> operator++() = 0;
+    virtual RandomAccessIterator<Type> operator++(int) = 0;
+    virtual RandomAccessIterator<Type> operator--() = 0;
+    virtual RandomAccessIterator<Type> operator--(int) = 0;
 
-    void operator+=(size_t);
-    T &operator[](size_t);
-    const T &operator[](size_t) const;
+    virtual const Type &operator*() const = 0;
+    virtual Type &operator*() = 0;
+
+    virtual bool operator == (const RandomAccessIterator<Type>& it) const = 0;
+    virtual bool operator != (const RandomAccessIterator<Type>& it) const = 0;
+
+    virtual void operator +=(int a) = 0;
+    virtual void operator -=(int a) = 0;
 };
 
-template <typename T>
-size_t operator-(const RandomAccessIterator<T> &, const RandomAccessIterator<T> &);
+template <class Type>
+RandomAccessIterator<Type> operator +(const RandomAccessIterator<Type>& it, int n);
+template <class Type>
+RandomAccessIterator<Type> operator +(int n, const RandomAccessIterator<Type>& it);
+template <class Type>
+RandomAccessIterator<Type> operator -(const RandomAccessIterator<Type>& it, int n);
+template <class Type>
+RandomAccessIterator<Type> operator -(int n, const RandomAccessIterator<Type>& it);
 
-template <typename T>
-RandomAccessIterator<T> &operator+(const RandomAccessIterator<T> &, size_t);
-template <typename T>
-RandomAccessIterator<T> &operator+(size_t, const RandomAccessIterator<T> &);
-
-template <typename Type>
-class Container
+template <class Type>
+size_t count(InputIterator<Type> begin, InputIterator<Type> end, Type value)
 {
-    Type *values;
-    size_t size;
-
-public:
-    typedef Type value_type;
-
-    class iterator
+    size_t result = 0;
+    while (begin != end)
     {
-    public:
-        iterator<Type> operator ++();
-        iterator<Type> operator ++(int);
-        Type &operator *();
-        const Type &operator *() const;
-    };
+        if (*begin == value)
+        {
+            ++result;
+        }
+        ++begin;
+    }
+    return result;
+}
 
-    Container();
-    Container(const Container<Type>&);
-    ~Container();
-
-    iterator<Type> begin();
-    iterator<Type> end();
-
-    size_t size() const;
-    bool empty() const;
-    size_t max_size() const;
-    void swap(Container<Type>&);
+struct Container {
+    int a;
+    int b;
+    std::string sample;
 };
+
+struct Collection {
+    int arr[3];
+};
+
+template <typename FIRST_TYPE, typename SECOND_TYPE>
+struct pair {
+    FIRST_TYPE first;
+    SECOND_TYPE second;
+};
+
+template <typename FIRST_TYPE, typename SECOND_TYPE>
+pair<FIRST_TYPE, SECOND_TYPE> make_pair(FIRST_TYPE f, SECOND_TYPE s) {
+    pair<FIRST_TYPE, SECOND_TYPE> p = {f, s};
+    return p;
+}
+
+auto p = make_pair(10, 3.2);

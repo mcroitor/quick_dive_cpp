@@ -68,7 +68,7 @@
 g++ -o MyProgram.exe MyProgram.cpp -IC:\\MyLibs\\MyMath -LC:\\MyLibs\\MyMath -lMyMath
 ```
 
-В данном случае ключ компиляции `-I` указывает путь к заголовочным файлам библиотеки, ключ `-L` указывает путь к библиотекам программирования, а ключ `-l` указывает имя библиотеки.
+В данном случае ключ компиляции `-I` указывает путь к заголовочным файлам библиотеки, ключ `-L` указывает путь к библиотекам программирования, а ключ `-l` указывает имя библиотеки. Пути могут быть как абсолютными, так и относительными.
 
 ## использование динамических библиотек
 
@@ -166,7 +166,7 @@ int main()
 
 ## Библиография
 
-1. [Библиотека (программирование), Wikipedia](https://ru.wikipedia.org/wiki/Библиотека_(программирование))
-2. [Создание библиотек DLL на C и C++ в Visual Studio, microsoft.com](https://learn.microsoft.com/ru-ru/cpp/build/dlls-in-visual-cpp?view=msvc-170)
+1. [Library (computing), Wikipedia](https://en.wikipedia.org/wiki/Library_(computing))
+2. [Create C/C++ DLLs in Visual Studio, microsoft.com](https://learn.microsoft.com/en-us/cpp/build/dlls-in-visual-cpp?view=msvc-170)
 3. [dlopen, Linux Manual page](https://www.man7.org/linux/man-pages/man3/dlopen.3.html)
 4. [Wheeler David, Dynamically Loaded (DL) Libraries](dwheeler.com/program-library/Program-Library-HOWTO/)

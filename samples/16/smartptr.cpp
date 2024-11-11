@@ -26,8 +26,9 @@ int main()
 {
     SmartPtr<int> value(new int{7});
     {
-        SmartPtr<int> name(new int{7});
-        name = value;
+        SmartPtr<int> name(new int{5});
+        // name = value;
+        std::cout << *name << std::endl;
     }
     std::cout << *value << std::endl;
     return 0;
