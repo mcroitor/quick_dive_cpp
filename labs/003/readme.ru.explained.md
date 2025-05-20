@@ -2,9 +2,9 @@
 
 ## Цель
 
-В рамках данной работы студент научиться переопределять операторы, а также ознакомиться с вариантами определения и использования конструкторов.
+В рамках данной работы студент научится переопределять операторы, а также ознакомится с вариантами определения и использования конструкторов.
 
-Кроме того, данная работа подготовит проект к использованию стандартной библиотеки С++.
+Кроме того, данная работа подготовит проект к использованию стандартной библиотеки C++.
 
 ## Задание
 
@@ -15,16 +15,16 @@
 Откройте консольное окно и перейдите в папку `SnakeGame`. Получите последние изменения проекта, выполнив команды:
 
 ```bash
-# select default branch
+# выбрать основную ветку
 git checkout main
-# get last changes
+# получить последние изменения
 git pull
 ```
 
-Создайте ветку, в которой вы будете выполнять выполнять задание:
+Создайте ветку, в которой вы будете выполнять задание:
 
 ```bash
-# create branch and switch to
+# создать ветку и переключиться на неё
 git checkout -B lab03
 ```
 
@@ -44,7 +44,7 @@ struct Point{
    Point(int _x = 0, int _y = 0);
    Point(const Point& other);
 
-   Point operator = (const Point& other);
+   Point& operator = (const Point& other);
    bool operator == (const Point& other) const;
 };
 
@@ -61,8 +61,9 @@ Point::Point(int _x, int _y) : x(_x), y(_y) {}
 
 Point::Point(const Point &other) : x(other.x), y(other.y) {}
 
-Point Point::operator=(const Point &other)
+Point& Point::operator=(const Point &other)
 {
+    if (this == &other) return *this;
     x = other.x;
     y = other.y;
     return *this;
@@ -104,7 +105,7 @@ public:
    Apple(const Apple& other);
    Point GetPosition() const;
 
-   Apple operator = (const Apple& other);
+   Apple& operator = (const Apple& other);
    bool operator == (const Apple& other) const;
 };
 
@@ -128,7 +129,8 @@ Point Apple::GetPosition() const
     return _position;
 }
 
-Apple Apple::operator = (const Apple& other){
+Apple& Apple::operator = (const Apple& other){
+    if (this == &other) return *this;
     _position = other.GetPosition();
     return *this;
 }
@@ -167,7 +169,7 @@ public:
    int GetWidth() const;
    int GetHeight() const;
 
-   Board operator = (const Board& other);
+   Board& operator = (const Board& other);
    bool operator == (const Board& other) const;
 };
 
@@ -194,8 +196,9 @@ int Board::GetHeight() const
     return _height;
 }
 
-Board Board::operator=(const Board &other)
+Board& Board::operator=(const Board &other)
 {
+    if (this == &other) return *this;
     _width = other.GetWidth();
     _height = other.GetHeight();
     return *this;
@@ -275,7 +278,7 @@ std::ostream& operator<<(std::ostream& out, const Direction& direction){
 
 struct AbstractPainter {
    virtual void DrawImage(Point topLeft, Point bottomRight, char** image) = 0;
-   virtual void WriteText(Point position, char* text) = 0;
+   virtual void WriteText(Point position, const char* text) = 0;
 };
 ```
 
@@ -290,8 +293,8 @@ struct AbstractPainter {
 
 class Painter: public AbstractPainter {
 public:
-   virtual void DrawImage(Point topLeft, Point bottomRight, char** image);
-   virtual void WriteText(Point position, char* text);
+   void DrawImage(Point topLeft, Point bottomRight, char** image) override;
+   void WriteText(Point position, const char* text) override;
 };
 ```
 
@@ -317,14 +320,15 @@ git push origin lab03
 
 ## Представление
 
-Для представления результата прикрепите ссылку на репозиторий в GitHub к заданию на Moodle.
+Для представления результата прикрепите ссылку на репозиторий GitHub к заданию в Moodle.
 
 ## Оценивание
 
-- `2p` - реализация конструкторов
-- `2p` - реализация операторов копирования
-- `2p` - реализация операторов сравнения
-- `2p` - реализация операторов ввода и вывода
-- `2p` - реализация базового абстрактного класса
-- `-1p` - за каждый день задержки
-- `-5p` - за плагиат
+- `1p` — реализация конструкторов;
+- `1p` — реализация оператора присваивания;
+- `2p` — реализация операторов сравнения;
+- `2p` — реализация операторов ввода и вывода;
+- `2p` — реализация базового абстрактного класса;
+- `2p` — защита работы;
+- `-1p` — за каждый день просрочки сдачи работы;
+- `-5p` — за плагиат.

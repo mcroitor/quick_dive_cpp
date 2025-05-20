@@ -6,7 +6,7 @@
 
 ## Задание
 
-Задание выполняется на основе предыдущей лабораторной работы. С целью упрощения работы предлагается выполнять шаги в среде разработки `Visual Studio Code`, и установленным с операционной среде компилятором `MingW G++`, программа для сборки проектов `make`, а также `GIT`.
+Задание выполняется на основе предыдущей лабораторной работы. С целью упрощения работы предлагается выполнять шаги в среде разработки `Visual Studio Code`, и установленным с операционной системе компилятором `MinGW G++`, программа для сборки проектов `make`, а также `GIT`.
 
 ### Создание ветки
 
@@ -19,7 +19,7 @@ git checkout main
 git pull
 ```
 
-Создайте ветку, в которой вы будете выполнять выполнять задание:
+Создайте ветку, в которой вы будете выполнять задание:
 
 ```bash
 # create branch and switch to
@@ -28,73 +28,75 @@ git checkout -B lab02
 
 ### Добавление cpp файлов
 
-Для каждого `hpp` файла создайте соответствующий `cpp` файл. Каждый С++ файл должен содержать реализации функций классов, объявленных в заголовочных файлах. Примерные содержания `cpp` файлов.
+Для каждого `.hpp` файла создайте соответствующий `.cpp` файл. Каждый С++ файл должен содержать реализации функций классов, объявленных в заголовочных файлах.
+
+Примерное содержание `.cpp` файлов:
 
 1. `apple.cpp`
 
-```cpp
-#include "apple.hpp"
+	```cpp
+	#include "apple.hpp"
 
-Apple::Apple() {}
-Apple::Apple(const Point &position) {}
-Point Apple::GetPosition() const {}
-```
+	Apple::Apple() {}
+	Apple::Apple(const Point &position) {}
+	Point Apple::GetPosition() const {}
+	```
 
 2. `board.cpp`
 
-```cpp
-#include "board.hpp"
+	```cpp
+	#include "board.hpp"
 
-Board::Board(int width, int height) {}
-int Board::GetWidth() const {}
-int Board::GetHeight() const {}
-```
+	Board::Board(int width, int height) {}
+	int Board::GetWidth() const {}
+	int Board::GetHeight() const {}
+	```
 
 3. `direction.cpp`
 
-```cpp
-#include "direction.hpp"
-```
+	```cpp
+	#include "direction.hpp"
+	```
 
 4. `game_engine.cpp`
 
-```cpp
-#include "game_engine.hpp"
+	```cpp
+	#include "game_engine.hpp"
 
-GameEngine::GameEngine() {}
-void GameEngine::Init() {}
-void GameEngine::Run() {}
-```
+	GameEngine::GameEngine() {}
+	void GameEngine::Init() {}
+	void GameEngine::Run() {}
+	```
 
 5. `painter.cpp`
 
-```cpp
-#include "painter.hpp"
+	```cpp
+	#include "painter.hpp"
 
-void Painter::DrawImage(Point topLeft, Point bottomRight, char **image) {}
-void Painter::WriteText(Point position, char *text) {}
-```
+	void Painter::DrawImage(Point topLeft, Point bottomRight, char **image) {}
+	void Painter::WriteText(Point position, char *text) {}
+	```
 
 6. `point.cpp`
 
-```cpp
-#include "point.hpp"
-```
+	```cpp
+	#include "point.hpp"
+	```
 
 7. `snake.cpp`
 
-```cpp
-#include "snake.hpp"
+	```cpp
+	#include "snake.hpp"
 
-Snake::Snake() {}
-Snake::Snake(const Point &_position) {}
-void Snake::Move(Direction direction) {}
-int Snake::GetSize() const {}
-Point Snake::GetPosition() const {}
-void Snake::Eat(const Apple &apple) {}
-```
+	Snake::Snake() {}
+	Snake::Snake(const Point &_position) {}
+	void Snake::Move(Direction direction) {}
+	int Snake::GetSize() const {}
+	Point Snake::GetPosition() const {}
+	void Snake::Eat(const Apple &apple) {}
+	```
 
-Также создайте файл `main.cpp` который будет содержать точку входа:
+Также создайте файл `main.cpp`, который будет содержать точку входа:
 
 ```cpp
 #include "game_engine.hpp"
@@ -183,14 +185,15 @@ git push
 
 ## Представление
 
-При представлении ответа прикрепите ссылку на репозиторий.
+Для представления результата прикрепите ссылку на репозиторий GitHub к заданию в Moodle.
 
 ## Оценивание
 
-- `2p` - реализация методов типов данных
-- `4p` - создание файла сборки
-- `1p` - создание файла `.gitignore`
-- `1p` - добавление в файл `README.md` способа сборки проекта
-- `2p` - добавление файлов `cpp` и файла сборки на GitHub в ветку `lab02`
-- `-1p` - за каждый день задержки
-- `-5p` - за плагиат
+- `2p` - реализация методов для типов данных;
+- `2p` - создание файла сборки проекта;
+- `1p` - создание файла `.gitignore`;
+- `1p` - добавление в файл `README.md` способа сборки проекта;
+- `2p` - добавление файлов `.cpp` и файла сборки на GitHub в ветку `lab02`;
+- `2p` - защита работы;
+- `-1p` - за каждый день просрочки сдачи работы;
+- `-5p` - за плагиат.
