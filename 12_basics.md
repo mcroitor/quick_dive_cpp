@@ -280,6 +280,11 @@ int main() {
 Также точка входа может принимать входные параметры - аргументы программы, передаваемые при запуске (например, в командной строке).
 
 ```cpp
+/**
+ * @file minimal.cpp
+ * @brief Простейшая программа на C++
+ * @details g++ minimal.cpp -o minimal
+ */
 int main(int argc, char** argv) {
    return 0;
 }
@@ -288,6 +293,11 @@ int main(int argc, char** argv) {
 Первый параметр _argc_ содержит количество аргументов командной строки, второй параметр _argv_ представляет собой массив строк, представляющий сами аргументы. Для понимания работы с аргументами точки входа рекомендуется рассмотреть и выполнить следующий код:
 
 ```cpp
+/**
+ * @file args.cpp
+ * @brief Программа, которая выводит аргументы командной строки
+ * @details g++ args.cpp -o args
+ */
 #include <iostream>
 
 int main(int argc, char **argv) {
@@ -454,6 +464,11 @@ char * sampleCharPointer;
 Пример работы с указателями:
 
 ```cpp
+/**
+ * @file pointer.cpp
+ * @brief Пример работы с указателями
+ * @details g++ pointer.cpp -o pointer
+ */
 #include <iostream>
 
 int main() {
@@ -489,6 +504,11 @@ int& another_ref_a = a;
 > Ссылка всегда инициализируется, и инициализируется другой переменной.
 
 ```cpp
+/**
+ * @file reference.cpp
+ * @brief Пример работы со ссылками
+ * @details g++ reference.cpp -o reference
+ */
 #include <iostream>
 
 int main() {
