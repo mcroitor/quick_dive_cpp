@@ -84,7 +84,7 @@
 В языке C++ определены два оператора, которые осуществляют увеличение или уменьшение целочисленной величины на 1:
 
 - оператор `++` – инкремент;
-- оператор `––`  – декремент.
+- оператор `--` – декремент.
 
 Эти операторы являются унарными, то есть требуют одного операнда. Эти операторы могут размещаться до и после операнда.
 
@@ -229,7 +229,7 @@ class vector{
     float x, y;
 public:
     vector(float p1 = 0, float p2 = 0): x(p1), y(p2) {}
-    vector operator = (const vector& p){
+    vector& operator = (const vector& p){
         x = p.x;
         y = p.y;
         return *this;
@@ -241,8 +241,7 @@ public:
 };
 
 vector operator + (const vector& p1, const vector& p2){
-    vector tmp;
-    tmp = p1;
+    vector tmp = p1;
     tmp += p2;
     return tmp;
 }
@@ -250,7 +249,7 @@ vector operator + (const vector& p1, const vector& p2){
 
 ## Оператор сравнения
 
-Для сравнивания объектов используется базовая операция `a == b`, операция `a != b` является производной от базовой.
+Для сравнивания объектов используется базовая операция `a == b`, операция `a != b` является производной от неё.
 
 ```cpp
 class int_pair{
@@ -282,6 +281,12 @@ bool operator != (const int_pair& p1, const int_pair& p2){
 Если определить данный оператор, то компилятор, на его основе, автоматически сгенерирует все операторы упорядочивания.
 
 ```cpp
+/**
+ * @file spaceship.cpp
+ * @brief Пример использования оператора spaceship
+ * @details g++ -std=c++20 spaceship.cpp
+ */
+#include <iostream>
 class int_pair{
     int first, second;
 public:
